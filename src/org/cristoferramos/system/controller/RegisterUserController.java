@@ -8,6 +8,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
+import org.cristoferramos.system.utils.ViewFactory;
 
 
 /**
@@ -18,6 +20,17 @@ public class RegisterUserController implements Initializable{
     
     @Override
     public void initialize (URL url, ResourceBundle rb){
+        
+    }
+    
+    @FXML
+    public void onCancel(MouseEvent event){
+        ViewFactory viewFacto = new ViewFactory();
+        viewFacto.viewLogin();
+    }
+    
+    @FXML
+    public void onCreateUser(MouseEvent event){
         
     }
     

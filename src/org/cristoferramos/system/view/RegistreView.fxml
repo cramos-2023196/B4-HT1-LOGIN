@@ -57,7 +57,7 @@
       </GridPane>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="btnCancel" mnemonicParsing="false" text="Cancelar" />
+            <Button fx:id="btnCancel" mnemonicParsing="false" onMouseClicked="#onCancel" text="Cancelar" />
             <Button fx:id="btnCreateUser" mnemonicParsing="false" text="Crear Cuenta" />
          </children>
       </HBox>
