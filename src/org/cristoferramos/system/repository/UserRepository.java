@@ -7,10 +7,11 @@ package org.cristoferramos.system.repository;
 import java.sql.CallableStatement;
 import org.cristoferramos.system.config.ConexionDB;
 import org.cristoferramos.system.model.User;
+import java.sql.SQLException;
 
 /**
  *
- * @author informatica
+ * @author Cristofer Ramos
  */
 public class UserRepository 
         implements UserInterface{
@@ -19,6 +20,10 @@ public class UserRepository
     private CallableStatement callSP;
     //ConexionDB
     private ConexionDB conexionDB = ConexionDB.getInstanciaConexionDB();
+    
+    public UserRepository(){
+        
+    }
     
     @Override
     public void create(User user){
@@ -34,9 +39,12 @@ public class UserRepository
             
             callSP.close(); //Liberar los recursos utilizados
             
-        }catch(Exception e){
+        }catch(SQLException e){
+            System.out.println("Error al crear el usuario");
+            System.out.println();
+            e.printStackTrace();
         
-    }
+        }
         
     }
     

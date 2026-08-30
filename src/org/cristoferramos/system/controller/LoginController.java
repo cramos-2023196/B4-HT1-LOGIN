@@ -14,7 +14,7 @@ import org.cristoferramos.system.utils.ViewFactory;
 
 /**
  *
- * @author informatica
+ * @author Cristofer Ramos
  */
 public class LoginController implements Initializable {
     

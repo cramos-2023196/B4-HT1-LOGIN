@@ -6,7 +6,7 @@ package org.cristoferramos.system.model;
 
 /**
  *
- * @author sulma
+ * @author Cristofer Ramos
  */
 public class User {
     private String idUser;
@@ -29,8 +29,8 @@ public class User {
         this.user = user;
     }
     
-    public User(String idUser, String email, String name, String lastname, String user) {
-        this.idUser = idUser;
+    public User(String password, String email, String name, String lastname,String user) {
+        this.password = password;
         this.email = email;
         this.name = name;
         this.lastname = lastname;

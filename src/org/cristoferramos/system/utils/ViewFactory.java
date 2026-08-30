@@ -14,7 +14,7 @@ import org.cristoferramos.system.ClasePrincipal;
 
 /**
  *
- * @author informatica
+ * @author Cristofer Ramos
  */
 public class ViewFactory {
     private final String PATH_VIEW = "/org/cristoferramos/system/view/";

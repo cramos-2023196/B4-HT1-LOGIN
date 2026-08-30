@@ -28,3 +28,5 @@ Delimiter $$
 Delimiter ;
 
 call sp_create_users("a", "a", "a@", "a", "a123");
+
+select * from Users;

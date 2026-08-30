@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author informatica
+ * @author Cristofer Ramos
  */
 
 public class SceneManager {

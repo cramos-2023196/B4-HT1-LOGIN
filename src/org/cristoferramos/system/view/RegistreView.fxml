@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="300.0" spacing="10.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.cristoferramos.system.controller.RegisterUserController">
    <opaqueInsets>
       <Insets />
@@ -58,7 +57,7 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
             <Button fx:id="btnCancel" mnemonicParsing="false" onMouseClicked="#onCancel" text="Cancelar" />
-            <Button fx:id="btnCreateUser" mnemonicParsing="false" text="Crear Cuenta" />
+            <Button fx:id="btnCreateUser" mnemonicParsing="false" onMouseClicked="#onCreateUser" text="Crear Cuenta" />
          </children>
       </HBox>
    </children>

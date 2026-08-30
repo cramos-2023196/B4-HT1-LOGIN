@@ -6,7 +6,7 @@ package org.cristoferramos.system.utils;
 
 /**
  *
- * @author informatica
+ * @author Cristofer Ramos
  */
 public class Validations {
     
@@ -26,11 +26,29 @@ public class Validations {
         
     }
     
-    public Boolean validateLengtText(String text, int lengtMax){
+    public Boolean validateLengthText(String text, int lengtMax){
         return text.length() <= lengtMax;
     }
     
-    public Boolean validateEmail(String Email){
+    public Boolean validateEmail(String email){
+        
+        int dotCount = 0, arrobeCount = 0;
+        //VALIDA LA EXISTENCIA DE PUNSTOS CONSECUTIVOS
+        for(int index = 0; index < email.length(); index++){
+            //System.out.println(email.charAt(index));
+            if(email.charAt(index) == '.')
+                dotCount++;
+            if(dotCount>1)
+                return false;
+        }
+        
+        //VALIDA LA EXISTENCIA DE SOLO UN UNICO ARROBA
+        for(int index = 0; index < email.length(); index ++){
+            if(email.charAt(index) == '@')
+                arrobeCount++;
+        }
+        if(arrobeCount != 1)
+            return false;
         return true;
     }
 }

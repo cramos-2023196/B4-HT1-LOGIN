@@ -11,7 +11,7 @@ import org.cristoferramos.system.utils.ViewFactory;
 
 /**
  *
- * @author informatica
+ * @author Cristofer Ramos
  */
 public class ClasePrincipal extends Application{
 
