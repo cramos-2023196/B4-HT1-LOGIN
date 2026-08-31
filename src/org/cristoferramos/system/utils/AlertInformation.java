@@ -9,7 +9,7 @@ import javafx.scene.control.Alert.AlertType;
 
 /**
  *
- * @author informatica
+ * @author Critofer Ramos
  */
 public class AlertInformation{
 

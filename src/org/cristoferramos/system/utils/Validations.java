@@ -31,24 +31,40 @@ public class Validations {
     }
     
     public Boolean validateEmail(String email){
-        
-        int dotCount = 0, arrobeCount = 0;
-        //VALIDA LA EXISTENCIA DE PUNSTOS CONSECUTIVOS
-        for(int index = 0; index < email.length(); index++){
-            //System.out.println(email.charAt(index));
-            if(email.charAt(index) == '.')
-                dotCount++;
-            if(dotCount>1)
-                return false;
-        }
-        
-        //VALIDA LA EXISTENCIA DE SOLO UN UNICO ARROBA
-        for(int index = 0; index < email.length(); index ++){
-            if(email.charAt(index) == '@')
-                arrobeCount++;
-        }
-        if(arrobeCount != 1)
+ 
+        if (email == null || email.trim().isEmpty()){
             return false;
+        }
+        String emailLimpio = email.trim();
+
+        if (emailLimpio.contains(" ")){
+            return false;
+        }
+
+        if (emailLimpio.contains("..")){
+            return false;
+        }
+
+        int indiceArroba = emailLimpio.indexOf('@');
+        if (indiceArroba <= 0 || indiceArroba != emailLimpio.lastIndexOf('@')){
+            return false; 
+        }
+        String usuario = emailLimpio.substring(0, indiceArroba);
+        String dominio = emailLimpio.substring(indiceArroba + 1);
+
+        if (dominio.startsWith(".") || !dominio.contains(".")){
+            return false;
+        }
+
+        String[] partesDominio = dominio.split("\\.");
+        String extension = partesDominio[partesDominio.length - 1];
+        if (extension.length() < 2 || !extension.matches("[a-zA-Z]+")){
+            return false;
+        }
+
+        if (!usuario.matches("^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$")) {
+            return false;
+        }
         return true;
     }
 }

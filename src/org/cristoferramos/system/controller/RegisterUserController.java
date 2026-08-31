@@ -35,8 +35,7 @@ public class RegisterUserController implements Initializable{
     private UserService userService = new UserService();
 
     @Override
-    public void initialize (URL url, ResourceBundle rb){
-        
+    public void initialize (URL url, ResourceBundle rb){ 
     }
     
     @FXML
@@ -47,14 +46,6 @@ public class RegisterUserController implements Initializable{
     
     @FXML
     public void onCreateUser(MouseEvent event){
-        //validate.validateEmail(txtEmail.getText().trim());
-        boolean isValiEmail = validate.validateEmail(txtEmail.getText().trim());
-        if(isValiEmail == false){ //Error: No es trueo
-            alertInfo.viewAlert("ERROR", "ERROR EAMIL", "ERROR DE CAMPO", "HAS INGRESADO UN EAMIL INCORRECTO");
-            //Otro erro: es porque faltava el return
-            return;
-        }
-        
         String user, name, lastName, email, password, confirmPassword;
         user = txtUser.getText().trim();
         name = txtName.getText().trim();
@@ -62,20 +53,26 @@ public class RegisterUserController implements Initializable{
         email = txtEmail.getText().trim();
         password = pwdPassword.getText().trim();
         confirmPassword = pwdConfirmPassword.getText().trim();
-        
+
         if( validate.emptyText(user) == true ||
             validate.emptyText(name) == true ||
             validate.emptyText(lastName) == true ||
             validate.emptyText(email) == true ||
             validate.emptyText(password) == true ||
             validate.emptyText(confirmPassword) == true){
-            
+
            alertInfo.viewAlert("ERROR", "ERROR DE CAMPOS VACIOS", 
                    "ERROR DE CAMPO", 
                    "DEJÓ CAMPOS VACIOS DEL FORMULARIO");
             return;
         }
-        
+
+        boolean isValiEmail = validate.validateEmail(email);
+        if(isValiEmail == false){
+            alertInfo.viewAlert("ERROR", "ERROR EMAIL", "ERROR DE CAMPO", "HAS INGRESADO UN EMAIL INCORRECTO");
+            return;
+        }
+
         String msgField = "";
         if(validate.validateLengthText(user, 25) == false){
             msgField = "El campo USUARIO es mayor a 25 caracteres";
@@ -96,12 +93,13 @@ public class RegisterUserController implements Initializable{
             alertInfo.viewAlert("ERROR", "ERROR DE CAMPO", "ERROR", msgField);
             return;
         }
+
         if( validate.equalsText(password, confirmPassword) == false ){
             alertInfo.viewAlert("ERROR", "ERROR DE CONTRASENA",
                             "ERROR", "SUS CONTRASEÑAS NO COINCIDEN");
             return;
         }
-        
+
         UserStatus status =
         userService.createUser(user, name, lastName, email, password);
         switch(status){
@@ -115,7 +113,5 @@ public class RegisterUserController implements Initializable{
                 System.out.println("Validar logintud de texto");
             default -> System.out.println("ERROR DESCONOCIDO");
         }
-        
-    }
-    
+    } 
 }
