@@ -34,7 +34,7 @@
                   <Hyperlink onMouseClicked="#onRegister" styleClass="link" text="Si no tienes cuenta Registrate" />
                </children>
             </HBox>
-            <Button id="btn-login" fx:id="btnLogIn" mnemonicParsing="false" text="Iniciar Sesión" />
+            <Button id="btn-login" fx:id="btnLogIn" mnemonicParsing="false" onMouseClicked="#onLogin" text="Iniciar Sesión" />
          </children>
       </VBox>
    </children>

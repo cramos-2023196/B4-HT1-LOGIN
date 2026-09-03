@@ -8,6 +8,7 @@ package org.cristoferramos.system.utils;
  *
  * @author Cristofer Ramos
  */
+
 public class Validations {
     
     public Validations(){
@@ -32,16 +33,16 @@ public class Validations {
     
     public Boolean validateEmail(String email){
  
-        if (email == null || email.trim().isEmpty()){
+        if(email == null || email.trim().isEmpty()){
             return false;
         }
         String emailLimpio = email.trim();
 
-        if (emailLimpio.contains(" ")){
+        if(emailLimpio.contains(" ")){
             return false;
         }
 
-        if (emailLimpio.contains("..")){
+        if(emailLimpio.contains("..")){
             return false;
         }
 
@@ -62,7 +63,7 @@ public class Validations {
             return false;
         }
 
-        if (!usuario.matches("^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$")) {
+        if (!usuario.matches("^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)*$")){
             return false;
         }
         return true;

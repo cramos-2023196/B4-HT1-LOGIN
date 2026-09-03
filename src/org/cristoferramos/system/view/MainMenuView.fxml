@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.cristoferramos.system.controller.MainMenuController">
    <top>
       <MenuBar prefHeight="25.0" prefWidth="215.0" BorderPane.alignment="CENTER">
         <menus>
@@ -46,7 +45,7 @@
             <Button mnemonicParsing="false" text="Inicion" />
             <Button mnemonicParsing="false" text="Perfil" />
             <Button mnemonicParsing="false" text="Configuración" />
-            <Button mnemonicParsing="false" text="Cerrar Sesión" />
+            <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onMouseClicked="#onCerrarSesion" text="Cerrar Sesión" />
          </children>
       </VBox>
    </left>

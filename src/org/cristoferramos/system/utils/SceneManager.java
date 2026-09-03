@@ -19,7 +19,6 @@ public class SceneManager {
     private Stage stagePrincipal;
  
     private SceneManager(){
- 
     }
  
     public static SceneManager getInstanciaSceneManager(){
@@ -29,12 +28,6 @@ public class SceneManager {
         return instanciaSceneManager;
  
     }
- 
-    /**
-     * Este metodo permite recibir un parametro de tipo Scene
-     * y es la escena que se mostrará en el Stage
-     * @param scene Escena a mostrar en el Stage
-     */
  
     public void changeScene(Scene scene){
         
@@ -47,12 +40,11 @@ public class SceneManager {
  
         }
     }
-    public Stage getStagePrincipal() {
+    public Stage getStagePrincipal(){
         return stagePrincipal;
  
     }
-    public void setStagePrincipal(Stage stagePrincipal) {
+    public void setStagePrincipal(Stage stagePrincipal){
         this.stagePrincipal = stagePrincipal;
- 
     }
 }

@@ -40,8 +40,8 @@ public class ViewFactory {
         
     }
     
-    public void loadScene(String nameFXML){
-        Scene scene = null;
+    public void loadScene(String nameFXML){ // ¿Por qué motivo no esta en debes de String nameFXML por sceneName?
+        Scene scene = null;                 
         try{
             switch (nameFXML){
                 case "login" ->{
@@ -49,16 +49,24 @@ public class ViewFactory {
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setResizable(false);
                     scene = loadFileFXML("LoginView.fxml", 400, 500);
                 }
+                
                 case "registre"->{
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setTitle("REGISTRO DE USUARIO");
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setResizable(false);
-                    scene = loadFileFXML("RegistreView.fxml", 400, 500);
+                    scene = loadFileFXML("RegistreView.fxml", 300, 350); // 400,500 
                 }
                 default -> scene = loadFileFXML("LoginView.fxml", 300, 400);
+                
+                case "mainmenu" ->{
+                    SceneManager.getInstanciaSceneManager().getStagePrincipal().setTitle("DASHBOARD - MENÚ PRINCIPAL");
+                    SceneManager.getInstanciaSceneManager().getStagePrincipal().setResizable(true);
+                    scene = loadFileFXML("MainMenuView.fxml", 500, 300);
+                    SceneManager.getInstanciaSceneManager().getStagePrincipal().setScene(scene);
+                }
             }
             SceneManager.getInstanciaSceneManager().changeScene(scene);
+            
         }catch(NullPointerException objetoNulo){
-            //Alert
             System.out.print("error load scene");
         }
     

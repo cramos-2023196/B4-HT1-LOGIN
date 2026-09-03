@@ -11,13 +11,14 @@ import javafx.scene.control.Alert.AlertType;
  *
  * @author Critofer Ramos
  */
+
 public class AlertInformation{
 
    public AlertInformation(){
    }
    
-    public void viewAlert(String tipoAlerta, String titulo, String encabezado, String mensaje) {
-    AlertType tipo= switch (tipoAlerta.toUpperCase()) {
+    public void viewAlert(String tipoAlerta, String titulo, String encabezado, String mensaje){
+    AlertType tipo= switch (tipoAlerta.toUpperCase()){
         case "INFO", "INFORMATION" -> AlertType.INFORMATION;
         case "WARNING", "WARN" -> AlertType.WARNING;
         case "ERROR", "ERR" -> AlertType.ERROR;

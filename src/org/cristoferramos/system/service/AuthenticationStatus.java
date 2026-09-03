@@ -9,9 +9,10 @@ package org.cristoferramos.system.service;
  * @author Cristofer Ramos
  */
 
-public enum UserStatus {
-    USER_CREATED, //200
-    ERROR_USER_CREATE, //401
-    FIELDS_EMPTY,
-    VALUE_LENGTH_INVALID 
+public enum AuthenticationStatus {
+    LOGIN_SUCCESS,       
+    NOT_EXIST_USER,      
+    INVALID_PASSWORD,    
+    CREDENTIALS_EMPTY,   
+    ERROR_LOGIN          
 }

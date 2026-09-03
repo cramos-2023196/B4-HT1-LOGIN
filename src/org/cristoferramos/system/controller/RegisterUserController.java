@@ -17,11 +17,11 @@ import org.cristoferramos.system.utils.AlertInformation;
 import org.cristoferramos.system.utils.Validations;
 import org.cristoferramos.system.utils.ViewFactory;
 
-
 /**
  *
  * @author Cristofer Ramos
  */
+
 public class RegisterUserController implements Initializable{
     
     @FXML private TextField txtUser;

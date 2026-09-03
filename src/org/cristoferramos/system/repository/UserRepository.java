@@ -5,24 +5,25 @@
 package org.cristoferramos.system.repository;
 
 import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import org.cristoferramos.system.config.ConexionDB;
 import org.cristoferramos.system.model.User;
-import java.sql.SQLException;
 
 /**
  *
  * @author Cristofer Ramos
  */
-public class UserRepository 
-        implements UserInterface{
+
+public class UserRepository implements UserInterface {
     
-    //CallableStatement
     private CallableStatement callSP;
-    //ConexionDB
+
     private ConexionDB conexionDB = ConexionDB.getInstanciaConexionDB();
     
     public UserRepository(){
-        
     }
     
     @Override
@@ -41,11 +42,55 @@ public class UserRepository
             
         }catch(SQLException e){
             System.out.println("Error al crear el usuario");
-            System.out.println();
+            //System.out.println();
             e.printStackTrace();
-        
         }
-        
     }
-    
+
+    public User findByUsername(String username){
+        String sql = "SELECT * FROM users WHERE username = ?";
+        try (Connection conn = conexionDB.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)){
+
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()){
+                return new User(
+                    rs.getString("password"),
+                    rs.getString("email"),
+                    rs.getString("name"),
+                    rs.getString("lastName"),
+                    rs.getString("username")
+                );
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public User findByEmail(String email){
+        String sql = "SELECT * FROM users WHERE email = ?";
+        try(Connection conn = conexionDB.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)){
+
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            if(rs.next()){
+                return new User(
+                    rs.getString("password"),
+                    rs.getString("email"),
+                    rs.getString("name"),
+                    rs.getString("lastName"),
+                    rs.getString("username")
+                );
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

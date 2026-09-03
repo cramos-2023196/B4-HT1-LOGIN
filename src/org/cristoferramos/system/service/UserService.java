@@ -13,6 +13,7 @@ import org.cristoferramos.system.utils.Validations;
  *
  * @author Cristofer Ramos
  */
+
 public class UserService {
     
     private Validations validate = new Validations();
@@ -20,7 +21,7 @@ public class UserService {
     private UserRepository userRepo = new UserRepository();
     
     public UserStatus createUser(String user, String name, String lastName, String email, String password){
-          if( validate.emptyText(user) == true ||
+          if(validate.emptyText(user) == true ||
             validate.emptyText(name) == true ||
             validate.emptyText(lastName) == true ||
             validate.emptyText(email) == true ||
@@ -38,7 +39,21 @@ public class UserService {
           }catch(Exception e){
               return UserStatus.ERROR_USER_CREATE;
           }
-        
     }
     
+    public boolean existsByUsername(String username){
+        try{
+            return userRepo.findByUsername(username) != null;
+        }catch (Exception e){
+            return false;
+        }
+    }
+    
+    public boolean existsByEmail(String email){
+        try{
+            return userRepo.findByEmail(email) != null;
+        }catch (Exception e){
+            return false;
+        }
+    }
 }

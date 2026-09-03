@@ -4,67 +4,56 @@
  */
 package org.cristoferramos.system.controller;
 
-//import java.io.IOException;
-//import javafx.fxml.FXML;
-//import javafx.scene.control.Button;
-//import javafx.scene.control.Menu;
-//import javafx.scene.control.MenuBar;
-//import javafx.stage.Stage;
-//import system.model.User;
-//import system.utils.SceneManager;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import org.cristoferramos.system.utils.ViewFactory;
 
 /**
  *
  * @author Cristofer Ramos
  */
-public class MainMenuController{
-//
-//    // Variables vinculadas al FXML (asegúrate que los fx:id coincidan)
-//    @FXML
-//    private MenuBar menuBarMain;
-//
-//    @FXML
-//    private Menu menuUser;
-//
-//    @FXML
-//    private Button btnLogOut;
-//
-//    @FXML
-//    private javafx.scene.layout.StackPane contentArea; // Área central vacía
-//
-//    private User usuarioActual;
-//
-//    /**
-//     * MÉTODO NUEVO: Se llama desde SceneManager para inyectar el usuario logueado.
-//     * Actualiza la interfaz con el nombre del usuario.
-//     */
-//    public void setUsuario(User usuario) {
-//        this.usuarioActual = usuario;
-//        if (usuario != null) {
-//            // Actualiza el texto del menú superior
-//            menuUser.setText("Usuario: " + usuario.getUsername());
-//        }
-//    }
-//
-//    /**
-//     * MÉTODO NUEVO: Acción del botón "Cerrar Sesión".
-//     * Limpia la sesión y devuelve al usuario a la pantalla de Login.
-//     */
-//    @FXML
-//    private void cerrarSesion() {
-//        this.usuarioActual = null; // Limpiar referencia en memoria
-//        
-//        try {
-//            // Obtenemos la ventana actual (Stage)
-//            Stage stage = (Stage) btnLogOut.getScene().getWindow();
-//            
-//            // Navegamos de vuelta al Login usando SceneManager
-//            SceneManager.cambiarEscena(stage, "LoginView");
-//            
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            System.err.println("Error crítico al cerrar sesión: " + e.getMessage());
-//        }
-//    }
-//    
+
+public class MainMenuController implements Initializable {
+    
+    @FXML
+    private Button btnCerrarSesion;
+
+    @FXML
+    private Button btnInicio;
+    
+    @FXML
+    private Button btnPerfil;
+    
+    @FXML
+    private Button btnConfiguracion;
+
+    private ViewFactory viewFactory;
+
+    public MainMenuController(){
+        this.viewFactory = new ViewFactory();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb){
+        System.out.println("Menú Principal cargado correctamente.");
+    }
+
+    @FXML
+    public void navegar(MouseEvent event){
+        Button btnPresionado = (Button) event.getSource();
+        System.out.println("Navegando a: " + btnPresionado.getText());
+    }
+
+    @FXML
+    public void onCerrarSesion(MouseEvent event){
+        System.out.println("Cerrando sesión y volviendo al Login...");
+        
+        // Lógica para destruir la sesión actual (si hubiera variables estáticas, limpiarlas aquí)
+        // Redirigir a la vista de Login
+        viewFactory.loadScene("LoginView");
+    }
 }

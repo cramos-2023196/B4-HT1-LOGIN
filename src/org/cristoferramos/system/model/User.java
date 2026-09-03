@@ -8,6 +8,7 @@ package org.cristoferramos.system.model;
  *
  * @author Cristofer Ramos
  */
+
 public class User {
     private String idUser;
     private String email;
@@ -20,7 +21,7 @@ public class User {
     public User(){
     }
     
-    public User(String idUser, String email, String name, String lastname, String password, String user) {
+    public User(String idUser, String email, String name, String lastname, String password, String user){
         this.idUser = idUser;
         this.email = email;
         this.name = name;
@@ -29,7 +30,7 @@ public class User {
         this.user = user;
     }
     
-    public User(String password, String email, String name, String lastname,String user) {
+    public User(String password, String email, String name, String lastname,String user){
         this.password = password;
         this.email = email;
         this.name = name;
