@@ -48,7 +48,8 @@ public class UserRepository implements UserInterface {
     }
 
     public User findByUsername(String username){
-        String sql = "SELECT * FROM users WHERE 'user' = ?"; // Cambien el nombre de username por el nombre que esta en la db user
+        // MODIFICADO: Se usa `Users` (con mayúscula) y `user` entre backticks
+        String sql = "SELECT * FROM `Users` WHERE `user` = ?";
         try (Connection conn = conexionDB.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)){
 
@@ -72,7 +73,8 @@ public class UserRepository implements UserInterface {
 
 
     public User findByEmail(String email){
-        String sql = "SELECT * FROM users WHERE email = ?";
+        // MODIFICADO: Se usa `Users` (con mayúscula) para coincidir con el nombre real de la tabla
+        String sql = "SELECT * FROM `Users` WHERE email = ?";
         try(Connection conn = conexionDB.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)){
 

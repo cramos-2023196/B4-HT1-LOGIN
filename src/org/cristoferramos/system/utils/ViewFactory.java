@@ -50,10 +50,10 @@ public class ViewFactory {
                     scene = loadFileFXML("LoginView.fxml", 400, 500);
                 }
                 
-                case "registre"->{
+                case "registre" ->{
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setTitle("REGISTRO DE USUARIO");
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setResizable(false);
-                    scene = loadFileFXML("RegistreView.fxml", 300, 350); // 400,500 
+                    scene = loadFileFXML("RegistreView.fxml", 400, 500); // 400,500 
                 }
                 default -> scene = loadFileFXML("LoginView.fxml", 300, 400);
                 
