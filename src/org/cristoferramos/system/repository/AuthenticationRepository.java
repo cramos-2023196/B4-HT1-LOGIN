@@ -18,7 +18,7 @@ public class AuthenticationRepository implements AuthenticationInterface {
 
     public User login(String usernameOrEmail, String password){
         
-        String sql = "SELECT * FROM users WHERE (username = ? OR email = ?) AND password = ?";
+        String sql = "SELECT * FROM users WHERE ('user' = ? OR email = ?) AND password = ?";
         
         try (Connection conn = conexionDB.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)){
@@ -34,8 +34,8 @@ public class AuthenticationRepository implements AuthenticationInterface {
                     rs.getString("password"),
                     rs.getString("email"),
                     rs.getString("name"),
-                    rs.getString("lastName"),
-                    rs.getString("username")
+                    rs.getString("lastname"),
+                    rs.getString("user")
                 );
             }
         }catch (SQLException e){
@@ -46,7 +46,7 @@ public class AuthenticationRepository implements AuthenticationInterface {
 
     @Override
     public boolean userExistsByUsername(String username){
-        String sql = "SELECT COUNT(*) FROM users WHERE username = ?";
+        String sql = "SELECT COUNT(*) FROM users WHERE 'user' = ?";
         try (Connection conn = conexionDB.getConnection(); 
              PreparedStatement stmt = conn.prepareStatement(sql)){
             

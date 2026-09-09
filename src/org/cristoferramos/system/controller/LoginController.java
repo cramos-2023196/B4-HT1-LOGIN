@@ -50,8 +50,8 @@ public class LoginController implements Initializable {
     
     @FXML
     public void onLogin(MouseEvent event){
-        String username = txtUsername.getText();
-        String password = pwdContrasena.getText();
+        String username = txtUsername.getText().trim();
+        String password = pwdContrasena.getText().trim();
         
         AuthenticationStatus status = authService.authenticateUser(username, password);
         

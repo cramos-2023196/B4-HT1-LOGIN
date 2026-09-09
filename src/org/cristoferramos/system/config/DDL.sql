@@ -27,6 +27,6 @@ Delimiter $$
 	end$$
 Delimiter ;
 
-call sp_create_users("a", "a", "a@", "a", "a123");
-
+call sp_create_users("Victor", "Alvarez", "victor@gmail.com", "Vt-20", "masterclass45");
+call sp_create_users("Cristofer", "Ramos", "cramos-2023196@kinal.edu.gt", "Bolix45", "holaMundo104");
 select * from Users;

@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sulma/OneDrive/Escritorio/4to.%20Perito%20en%20Informática/Taller/Bimestre%204/Semana%202/auditoria-usuarios-poductos/src/org/cristoferramos/system/controller/MainMenuController.java</file>
-            <file>file:/C:/Users/sulma/OneDrive/Escritorio/4to.%20Perito%20en%20Informática/Taller/Bimestre%204/Semana%202/auditoria-usuarios-poductos/src/org/cristoferramos/system/utils/ViewFactory.java</file>
+            <file>file:/C:/Users/sulma/OneDrive/Escritorio/4to.%20Perito%20en%20Informática/Taller/Bimestre%204/Semana%202/auditoria-usuarios-poductos/src/org/cristoferramos/system/repository/UserRepository.java</file>
             <file>file:/C:/Users/sulma/OneDrive/Escritorio/4to.%20Perito%20en%20Informática/Taller/Bimestre%204/Semana%202/auditoria-usuarios-poductos/src/org/cristoferramos/system/controller/LoginController.java</file>
-            <file>file:/C:/Users/sulma/OneDrive/Escritorio/4to.%20Perito%20en%20Informática/Taller/Bimestre%204/Semana%202/auditoria-usuarios-poductos/src/org/cristoferramos/system/view/MainMenuView.fxml</file>
+            <file>file:/C:/Users/sulma/OneDrive/Escritorio/4to.%20Perito%20en%20Informática/Taller/Bimestre%204/Semana%202/auditoria-usuarios-poductos/src/org/cristoferramos/system/repository/AuthenticationRepository.java</file>
+            <file>file:/C:/Users/sulma/OneDrive/Escritorio/4to.%20Perito%20en%20Informática/Taller/Bimestre%204/Semana%202/auditoria-usuarios-poductos/src/org/cristoferramos/system/model/User.java</file>
         </group>
     </open-files>
 </project-private>

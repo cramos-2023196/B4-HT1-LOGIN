@@ -48,7 +48,7 @@ public class UserRepository implements UserInterface {
     }
 
     public User findByUsername(String username){
-        String sql = "SELECT * FROM users WHERE username = ?";
+        String sql = "SELECT * FROM users WHERE 'user' = ?"; // Cambien el nombre de username por el nombre que esta en la db user
         try (Connection conn = conexionDB.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)){
 
@@ -60,8 +60,8 @@ public class UserRepository implements UserInterface {
                     rs.getString("password"),
                     rs.getString("email"),
                     rs.getString("name"),
-                    rs.getString("lastName"),
-                    rs.getString("username")
+                    rs.getString("lastname"),
+                    rs.getString("user")
                 );
             }
         }catch (SQLException e){
@@ -84,8 +84,8 @@ public class UserRepository implements UserInterface {
                     rs.getString("password"),
                     rs.getString("email"),
                     rs.getString("name"),
-                    rs.getString("lastName"),
-                    rs.getString("username")
+                    rs.getString("lastname"),
+                    rs.getString("user")
                 );
             }
         }catch (SQLException e){
