@@ -16,23 +16,16 @@ import org.cristoferramos.system.service.AuthenticationService;
 import org.cristoferramos.system.service.AuthenticationStatus;
 import org.cristoferramos.system.utils.AlertInformation;
 import org.cristoferramos.system.utils.ViewFactory;
-        
 
 /**
  *
  * @author Cristofer Ramos
  */
 
-public class LoginController implements Initializable {
-    
-    @FXML
-    private TextField txtUsername;
-
-    @FXML
-    private PasswordField pwdContrasena;
-
-    @FXML
-    private Button btnLogIn;
+public class LoginController implements Initializable{
+    @FXML private TextField txtUsername;
+    @FXML private PasswordField pwdContrasena;
+    @FXML private Button btnLogIn;
     
     private AuthenticationService authService;
     private AlertInformation alertInfo;
@@ -65,19 +58,19 @@ public class LoginController implements Initializable {
             case NOT_EXIST_USER:
                 alertInfo.viewAlert("ERROR", "Usuario No Existe", 
                         "Error de Autenticación", 
-                        "El nombre de usuario no es válido");
+                        "El nombre de usuario o correo no está registrado.");
                 break;
                 
             case INVALID_PASSWORD:
                 alertInfo.viewAlert("ERROR", "Contraseña Incorrecta", 
                         "Error de Autenticación", 
-                        "Contraseña incorrecta");
-                pwdContrasena.clear(); // Limpiar campo contraseña
+                        "La contraseña ingresada es incorrecta.");
+                pwdContrasena.clear();
                 break;
                 
             case LOGIN_SUCCESS:
-
-                viewFactory.loadScene("MainMenuView");
+                // Redirige correctamente al Menú Principal (Dashboard)
+                viewFactory.loadScene("mainmenu");
                 break;
                 
             case ERROR_LOGIN:
@@ -91,5 +84,5 @@ public class LoginController implements Initializable {
     @FXML
     public void onRegister(MouseEvent event){
         viewFactory.viewRegister();
-    } 
+    }
 }

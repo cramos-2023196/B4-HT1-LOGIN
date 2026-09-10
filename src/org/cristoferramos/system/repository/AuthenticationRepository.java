@@ -14,20 +14,18 @@ import java.sql.*;
  */
 
 public class AuthenticationRepository implements AuthenticationInterface {
-    
     private ConexionDB conexionDB = ConexionDB.getInstanciaConexionDB();
 
+    @Override
     public User login(String usernameOrEmail, String password){
+        String sql = "SELECT * FROM `Users` WHERE (`user` = ? OR `email` = ?) AND `password` = ?";
         
-        // MODIFICADO: Se usa `Users` (con mayúscula) y `user` entre backticks para evitar conflicto con palabra reservada
-        String sql = "SELECT * FROM `Users` WHERE (`user` = ? OR email = ?) AND password = ?";
-        
-        try (Connection conn = conexionDB.getConnection();
+        try(Connection conn = conexionDB.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)){
             
-            stmt.setString(1, usernameOrEmail);
-            stmt.setString(2, usernameOrEmail);
-            stmt.setString(3, password);
+            stmt.setString(1, usernameOrEmail.trim());
+            stmt.setString(2, usernameOrEmail.trim());
+            stmt.setString(3, password.trim());
             
             ResultSet rs = stmt.executeQuery();
             
@@ -40,7 +38,7 @@ public class AuthenticationRepository implements AuthenticationInterface {
                     rs.getString("user")
                 );
             }
-        }catch (SQLException e){
+        }catch(SQLException e){
             e.printStackTrace();
         }
         return null;
@@ -48,18 +46,17 @@ public class AuthenticationRepository implements AuthenticationInterface {
 
     @Override
     public boolean userExistsByUsername(String username){
-        // MODIFICADO: Se usa `Users` (con mayúscula) y `user` entre backticks
         String sql = "SELECT COUNT(*) FROM `Users` WHERE `user` = ?";
         try (Connection conn = conexionDB.getConnection(); 
              PreparedStatement stmt = conn.prepareStatement(sql)){
             
-            stmt.setString(1, username);
+            stmt.setString(1, username.trim());
             ResultSet rs = stmt.executeQuery();
             
             if(rs.next()){
                 return rs.getInt(1) > 0;
             }
-        }catch (SQLException e){
+        }catch(SQLException e){
             e.printStackTrace();
         }
         return false;
@@ -67,18 +64,18 @@ public class AuthenticationRepository implements AuthenticationInterface {
 
     @Override
     public boolean userExistsByEmail(String email){
-        // MODIFICADO: Se usa `Users` (con mayúscula) para coincidir con el nombre real de la tabla
-        String sql = "SELECT COUNT(*) FROM `Users` WHERE email = ?";
+        String sql = "SELECT COUNT(*) FROM `Users` WHERE `email` = ?";
         try(Connection conn = conexionDB.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)){
             
-            stmt.setString(1, email);
+            stmt.setString(1, email.trim());
             ResultSet rs = stmt.executeQuery();
             
             if(rs.next()){
                 return rs.getInt(1) > 0;
             }
-        } catch (SQLException e){
+            
+        }catch(SQLException e){
             e.printStackTrace();
         }
         return false;

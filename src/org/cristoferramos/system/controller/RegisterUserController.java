@@ -24,94 +24,75 @@ import org.cristoferramos.system.utils.ViewFactory;
 
 public class RegisterUserController implements Initializable{
     
-    @FXML private TextField txtUser;
+@FXML private TextField txtUser;
+
     @FXML private TextField txtName;
     @FXML private TextField txtLastName;
     @FXML private TextField txtEmail;
     @FXML private PasswordField pwdPassword;
     @FXML private PasswordField pwdConfirmPassword;
+
     private Validations validate = new Validations();
     private AlertInformation alertInfo = new AlertInformation();
     private UserService userService = new UserService();
+    private ViewFactory viewFactory = new ViewFactory();
 
     @Override
-    public void initialize (URL url, ResourceBundle rb){ 
+    public void initialize(URL url, ResourceBundle rb){
     }
-    
+
     @FXML
     public void onCancel(MouseEvent event){
-        ViewFactory viewFacto = new ViewFactory();
-        viewFacto.viewLogin();
+        viewFactory.viewLogin();
     }
-    
+
     @FXML
     public void onCreateUser(MouseEvent event){
-        String user, name, lastName, email, password, confirmPassword;
-        user = txtUser.getText().trim();
-        name = txtName.getText().trim();
-        lastName = txtLastName.getText().trim();
-        email = txtEmail.getText().trim();
-        password = pwdPassword.getText().trim();
-        confirmPassword = pwdConfirmPassword.getText().trim();
+        String user = txtUser.getText().trim();
+        String name = txtName.getText().trim();
+        String lastName = txtLastName.getText().trim();
+        String email = txtEmail.getText().trim();
+        String password = pwdPassword.getText().trim();
+        String confirmPassword = pwdConfirmPassword.getText().trim();
 
-        if( validate.emptyText(user) == true ||
-            validate.emptyText(name) == true ||
-            validate.emptyText(lastName) == true ||
-            validate.emptyText(email) == true ||
-            validate.emptyText(password) == true ||
-            validate.emptyText(confirmPassword) == true){
-
-           alertInfo.viewAlert("ERROR", "ERROR DE CAMPOS VACIOS", 
-                   "ERROR DE CAMPO", 
-                   "DEJÓ CAMPOS VACIOS DEL FORMULARIO");
-            return;
+        if(validate.emptyText(user) || validate.emptyText(name) ||
+           validate.emptyText(lastName) || validate.emptyText(email) ||
+           validate.emptyText(password) || validate.emptyText(confirmPassword)) {
+           alertInfo.viewAlert("ERROR", "Campos Vacíos", "Error de Validación", "Por favor complete todos los campos.");
+           return;
         }
 
-        boolean isValiEmail = validate.validateEmail(email);
-        if(isValiEmail == false){
-            alertInfo.viewAlert("ERROR", "ERROR EMAIL", "ERROR DE CAMPO", "HAS INGRESADO UN EMAIL INCORRECTO");
-            return;
+        if(!validate.validateEmail(email)){
+           alertInfo.viewAlert("ERROR", "Email Inválido", "Error de Campo", "Ha ingresado un correo electrónico con formato incorrecto.");
+           return;
         }
 
         String msgField = "";
-        if(validate.validateLengthText(user, 25) == false){
-            msgField = "El campo USUARIO es mayor a 25 caracteres";
-        }
-        if(validate.validateLengthText(name, 50) == false){     
-            msgField = "El campo NOMBRES es mayor a 50 caracteres";
-        }
-        if(validate.validateLengthText(lastName, 50) == false){
-            msgField = "EL campo APELLIDOS es mayor a 50 caracteres";
-        }
-        if(validate.validateLengthText(email, 50) == false){
-            msgField = "El campo EMAIL es mayor a 50 caracters";
-        }
-        if(validate.validateLengthText(password, 35) == false){
-            msgField = "El campo PASSWORD es mayor a 35 caracteres";
-        }
-        if(msgField.isEmpty() == false){
-            alertInfo.viewAlert("ERROR", "ERROR DE CAMPO", "ERROR", msgField);
-            return;
+        if(!validate.validateLengthText(user, 25)) msgField = "El usuario excede 25 caracteres.";
+        if(!validate.validateLengthText(name, 50)) msgField = "El nombre excede 50 caracteres.";
+        if(!validate.validateLengthText(lastName, 50)) msgField = "El apellido excede 50 caracteres.";
+        if(!validate.validateLengthText(email, 50)) msgField = "El correo excede 50 caracteres.";
+        if(!validate.validateLengthText(password, 35)) msgField = "La contraseña excede 35 caracteres.";
+
+        if(!msgField.isEmpty()){
+           alertInfo.viewAlert("ERROR", "Longitud Inválida", "Error de Campo", msgField);
+           return;
         }
 
-        if( validate.equalsText(password, confirmPassword) == false ){
-            alertInfo.viewAlert("ERROR", "ERROR DE CONTRASENA",
-                            "ERROR", "SUS CONTRASEÑAS NO COINCIDEN");
-            return;
+        if(!validate.equalsText(password, confirmPassword)){
+           alertInfo.viewAlert("ERROR", "Contraseñas no coinciden", "Error de Contraseña", "Las contraseñas ingresadas no coinciden.");
+           return;
         }
 
-        UserStatus status =
-        userService.createUser(user, name, lastName, email, password);
+        UserStatus status = userService.createUser(user, name, lastName, email, password);
+        
         switch(status){
-            case UserStatus.ERROR_USER_CREATE->
-                System.out.println("Error al crear en el ctrl");
-            case UserStatus.USER_CREATED->
-                System.out.println("Si se creo el usuario");
-            case UserStatus.FIELDS_EMPTY->
-                System.out.println("Los campos no esta vacions");
-            case UserStatus.VALUE_LENGTH_INVALID->
-                System.out.println("Validar logintud de texto");
-            default -> System.out.println("ERROR DESCONOCIDO");
+            case USER_CREATED -> {
+                alertInfo.viewAlert("INFO", "Usuario Creado", "Éxito", "El usuario ha sido registrado correctamente.");
+                viewFactory.viewLogin(); // Regresa al Login tras la creación exitosa
+            }
+            case ERROR_USER_CREATE -> alertInfo.viewAlert("ERROR", "Error de Creación", "Error", "No se pudo registrar el usuario en la base de datos.");
+            default -> alertInfo.viewAlert("ERROR", "Error Desconocido", "Error", "Ocurrió un error inesperado.");
         }
-    } 
+    }
 }

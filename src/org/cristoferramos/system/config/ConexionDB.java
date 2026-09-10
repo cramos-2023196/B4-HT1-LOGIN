@@ -12,7 +12,8 @@ import java.sql.SQLException;
  *
  * @author Cristofer Ramos
  */
-public class ConexionDB {
+
+public class ConexionDB{
     private static ConexionDB instanciaConexionDB;
     private Connection connection;
     
@@ -29,11 +30,11 @@ public class ConexionDB {
         } 
     }
 
-    public Connection getConnection() {
+    public Connection getConnection(){
         return connection;
     }
 
-    public void setConnection(Connection connection) {
+    public void setConnection(Connection connection){
         this.connection = connection;
     }
     

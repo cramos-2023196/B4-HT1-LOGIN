@@ -10,17 +10,16 @@ package org.cristoferramos.system.model;
  */
 
 public class User {
-    private String idUser;
+private String idUser;
     private String email;
     private String name;
     private String lastname;
     private String password;
     private String user;
-    
-    //Contructor vacio
+
     public User(){
     }
-    
+
     public User(String idUser, String email, String name, String lastname, String password, String user){
         this.idUser = idUser;
         this.email = email;
@@ -29,8 +28,9 @@ public class User {
         this.password = password;
         this.user = user;
     }
-    
-    public User(String password, String email, String name, String lastname,String user){
+
+    // Constructor sin idUser (Corregido: coincidencia de parámetro con variable de clase)
+    public User(String password, String email, String name, String lastname, String user){
         this.password = password;
         this.email = email;
         this.name = name;
@@ -85,5 +85,4 @@ public class User {
     public void setUser(String user) {
         this.user = user;
     }
-
 }

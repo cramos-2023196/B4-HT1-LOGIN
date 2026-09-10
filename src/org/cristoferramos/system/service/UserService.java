@@ -8,7 +8,6 @@ import org.cristoferramos.system.model.User;
 import org.cristoferramos.system.repository.UserRepository;
 import org.cristoferramos.system.utils.AlertInformation;
 import org.cristoferramos.system.utils.Validations;
-
 /**
  *
  * @author Cristofer Ramos

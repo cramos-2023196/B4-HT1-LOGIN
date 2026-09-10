@@ -13,21 +13,22 @@ import org.cristoferramos.system.utils.ViewFactory;
  *
  * @author Cristofer Ramos
  */
+
 public class ClasePrincipal extends Application{
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    
+    public static void main(String[] args){
         // TODO code application logic here
         launch(args);
     }
+    
     @Override
     public void start (Stage stageRoot){
         SceneManager.getInstanciaSceneManager().setStagePrincipal(stageRoot);
         ViewFactory viewFactory = new ViewFactory();
         viewFactory.viewLogin();
-    
     }
-    
 }

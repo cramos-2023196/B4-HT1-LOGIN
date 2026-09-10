@@ -14,5 +14,5 @@ public enum AuthenticationStatus {
     NOT_EXIST_USER,      
     INVALID_PASSWORD,    
     CREDENTIALS_EMPTY,   
-    ERROR_LOGIN          
+    ERROR_LOGIN       
 }

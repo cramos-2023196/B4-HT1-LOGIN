@@ -17,7 +17,7 @@ import org.cristoferramos.system.utils.ViewFactory;
  * @author Cristofer Ramos
  */
 
-public class MainMenuController implements Initializable {
+public class MainMenuController implements Initializable{
     
     @FXML
     private Button btnCerrarSesion;

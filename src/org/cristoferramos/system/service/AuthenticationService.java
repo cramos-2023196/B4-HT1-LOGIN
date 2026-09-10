@@ -14,6 +14,7 @@ import org.cristoferramos.system.utils.Validations;
  */
 
 public class AuthenticationService {
+    
     private AuthenticationRepository authRepo;
     private UserService userService;
     private Validations validate;
@@ -24,9 +25,9 @@ public class AuthenticationService {
         this.validate = new Validations();
     }
 
-    public AuthenticationStatus authenticateUser(String usernameOrEmail, String password){
+    public AuthenticationStatus authenticateUser(String usernameOrEmail, String password) {
 
-        if(validate.emptyText(usernameOrEmail) || validate.emptyText(password)){
+        if(validate.emptyText(usernameOrEmail) || validate.emptyText(password)) {
             return AuthenticationStatus.CREDENTIALS_EMPTY;
         }
 
@@ -34,32 +35,29 @@ public class AuthenticationService {
         boolean exists;
 
         if(isEmail){
-            exists = userService.existsByEmail(usernameOrEmail);
+           exists = userService.existsByEmail(usernameOrEmail);
         }else{
-            exists = userService.existsByUsername(usernameOrEmail);
+           exists = userService.existsByUsername(usernameOrEmail);
         }
 
         if(!exists){
-            return AuthenticationStatus.NOT_EXIST_USER;
+           return AuthenticationStatus.NOT_EXIST_USER;
         }
 
-        try{
+        try {
             User user = authRepo.login(usernameOrEmail, password);
-            
             if(user != null){
-                
-                return AuthenticationStatus.LOGIN_SUCCESS;
+               return AuthenticationStatus.LOGIN_SUCCESS;
             }else{
-
-                return AuthenticationStatus.INVALID_PASSWORD;
+               return AuthenticationStatus.INVALID_PASSWORD;
             }
-        }catch(Exception e){
+        }catch (Exception e){
             e.printStackTrace();
             return AuthenticationStatus.ERROR_LOGIN;
         }
     }
-    
-    public User getAuthenticatedUser(String usernameOrEmail, String password) {
+
+    public User getAuthenticatedUser(String usernameOrEmail, String password){
         return authRepo.login(usernameOrEmail, password);
     }
 }

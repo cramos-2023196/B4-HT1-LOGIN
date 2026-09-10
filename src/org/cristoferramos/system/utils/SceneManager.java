@@ -26,7 +26,6 @@ public class SceneManager {
         if(instanciaSceneManager == null)
             instanciaSceneManager = new SceneManager();
         return instanciaSceneManager;
- 
     }
  
     public void changeScene(Scene scene){

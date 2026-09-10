@@ -16,66 +16,58 @@ import org.cristoferramos.system.ClasePrincipal;
  *
  * @author Cristofer Ramos
  */
+
 public class ViewFactory {
-    private final String PATH_VIEW = "/org/cristoferramos/system/view/";
-    
-    public Scene loadFileFXML(String nameFXML, int width, int height){
+
+private final String PATH_VIEW = "/org/cristoferramos/system/view/";
+
+    public Scene loadFileFXML(String nameFXML, int width, int height) {
         String pathOffile = PATH_VIEW + nameFXML;
         try{
-            //FXMLLoader
             FXMLLoader loaderFXML = new FXMLLoader();
-            //Leer la URL del archvo
-            //Lamar al archivo amin
             URL urlFile = ClasePrincipal.class.getResource(pathOffile);
             loaderFXML.setBuilderFactory(new JavaFXBuilderFactory());
             loaderFXML.setLocation(urlFile);
-            
             return new Scene(loaderFXML.load(), width, height);
-                    
-            
-        }catch(IOException e){
+        }catch (IOException e){
             throw new UncheckedIOException(e);
-            
         }
-        
     }
-    
-    public void loadScene(String nameFXML){ // ¿Por qué motivo no esta en debes de String nameFXML por sceneName?
-        Scene scene = null;                 
+
+    public void loadScene(String nameFXML){
+        Scene scene = null;
         try{
-            switch (nameFXML){
-                case "login" ->{
+            switch (nameFXML.toLowerCase()) {
+                case "login", "loginview" -> {
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setTitle("Login de Usuario");
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setResizable(false);
                     scene = loadFileFXML("LoginView.fxml", 400, 500);
                 }
-                
-                case "registre" ->{
+                case "registre", "registreview" -> {
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setTitle("REGISTRO DE USUARIO");
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setResizable(false);
-                    scene = loadFileFXML("RegistreView.fxml", 400, 500); // 400,500 
+                    scene = loadFileFXML("RegistreView.fxml", 400, 500);
                 }
-                default -> scene = loadFileFXML("LoginView.fxml", 300, 400);
-                
-                case "mainmenu" ->{
+                case "mainmenu", "mainmenuview" -> {
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setTitle("DASHBOARD - MENÚ PRINCIPAL");
                     SceneManager.getInstanciaSceneManager().getStagePrincipal().setResizable(true);
                     scene = loadFileFXML("MainMenuView.fxml", 500, 300);
-                    SceneManager.getInstanciaSceneManager().getStagePrincipal().setScene(scene);
                 }
+                default -> scene = loadFileFXML("LoginView.fxml", 400, 500);
             }
-            SceneManager.getInstanciaSceneManager().changeScene(scene);
-            
-        }catch(NullPointerException objetoNulo){
-            System.out.print("error load scene");
+            if(scene != null){
+                SceneManager.getInstanciaSceneManager().changeScene(scene);
+            }
+        }catch (NullPointerException objetoNulo){
+            System.out.println("Error al cargar la escena: " + nameFXML);
         }
-    
     }
+
     public void viewLogin(){
         loadScene("login");
     }
+
     public void viewRegister(){
         loadScene("registre");
-    
     }
 }

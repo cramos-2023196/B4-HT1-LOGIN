@@ -20,7 +20,6 @@ import org.cristoferramos.system.model.User;
 public class UserRepository implements UserInterface {
     
     private CallableStatement callSP;
-
     private ConexionDB conexionDB = ConexionDB.getInstanciaConexionDB();
     
     public UserRepository(){
@@ -37,25 +36,20 @@ public class UserRepository implements UserInterface {
             callSP.setString(5, user.getPassword());
             
             callSP.execute();
-            
-            callSP.close(); //Liberar los recursos utilizados
+            callSP.close();
             
         }catch(SQLException e){
             System.out.println("Error al crear el usuario");
-            //System.out.println();
             e.printStackTrace();
         }
     }
 
     public User findByUsername(String username){
-        // MODIFICADO: Se usa `Users` (con mayúscula) y `user` entre backticks
         String sql = "SELECT * FROM `Users` WHERE `user` = ?";
         try (Connection conn = conexionDB.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)){
-
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
-
             if (rs.next()){
                 return new User(
                     rs.getString("password"),
@@ -65,22 +59,18 @@ public class UserRepository implements UserInterface {
                     rs.getString("user")
                 );
             }
-        }catch (SQLException e){
+        }catch(SQLException e){
             e.printStackTrace();
         }
         return null;
     }
 
-
     public User findByEmail(String email){
-        // MODIFICADO: Se usa `Users` (con mayúscula) para coincidir con el nombre real de la tabla
-        String sql = "SELECT * FROM `Users` WHERE email = ?";
+        String sql = "SELECT * FROM `Users` WHERE `email` = ?";
         try(Connection conn = conexionDB.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)){
-
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
-
             if(rs.next()){
                 return new User(
                     rs.getString("password"),
@@ -90,7 +80,7 @@ public class UserRepository implements UserInterface {
                     rs.getString("user")
                 );
             }
-        }catch (SQLException e){
+        }catch(SQLException e){
             e.printStackTrace();
         }
         return null;

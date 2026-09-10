@@ -47,7 +47,7 @@ public class Validations {
         }
 
         int indiceArroba = emailLimpio.indexOf('@');
-        if (indiceArroba <= 0 || indiceArroba != emailLimpio.lastIndexOf('@')){
+        if(indiceArroba <= 0 || indiceArroba != emailLimpio.lastIndexOf('@')){
             return false; 
         }
         String usuario = emailLimpio.substring(0, indiceArroba);

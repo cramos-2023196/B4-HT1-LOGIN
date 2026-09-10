@@ -11,7 +11,7 @@ import org.cristoferramos.system.model.User;
  * @author Cristofer Ramos
  */
 
-public interface AuthenticationInterface {
+public interface AuthenticationInterface{
     User login(String usernameOrEmail, String password);
     boolean userExistsByUsername(String username);
     boolean userExistsByEmail(String email);
