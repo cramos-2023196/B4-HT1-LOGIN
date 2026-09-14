@@ -24,7 +24,6 @@ public class Validations {
         if(text.isEmpty() || text.isBlank())
             isEmpty = true;
         return isEmpty;
-        
     }
     
     public Boolean validateLengthText(String text, int lengtMax){

@@ -29,7 +29,7 @@ private String idUser;
         this.user = user;
     }
 
-    // Constructor sin idUser (Corregido: coincidencia de parámetro con variable de clase)
+    // Constructor sin idUser
     public User(String password, String email, String name, String lastname, String user){
         this.password = password;
         this.email = email;

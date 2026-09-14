@@ -34,6 +34,5 @@ public class AlertInformation{
     alert.setContentText(mensaje);
     
     alert.showAndWait();
-    }
-    
+    } 
 }

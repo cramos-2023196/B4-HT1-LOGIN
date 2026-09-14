@@ -89,7 +89,7 @@ public class RegisterUserController implements Initializable{
         switch(status){
             case USER_CREATED -> {
                 alertInfo.viewAlert("INFO", "Usuario Creado", "Éxito", "El usuario ha sido registrado correctamente.");
-                viewFactory.viewLogin(); // Regresa al Login tras la creación exitosa
+                viewFactory.viewLogin(); //Regresa al Login tras la creación exitosa
             }
             case ERROR_USER_CREATE -> alertInfo.viewAlert("ERROR", "Error de Creación", "Error", "No se pudo registrar el usuario en la base de datos.");
             default -> alertInfo.viewAlert("ERROR", "Error Desconocido", "Error", "Ocurrió un error inesperado.");

@@ -41,8 +41,8 @@ public class SceneManager {
     }
     public Stage getStagePrincipal(){
         return stagePrincipal;
- 
     }
+    
     public void setStagePrincipal(Stage stagePrincipal){
         this.stagePrincipal = stagePrincipal;
     }

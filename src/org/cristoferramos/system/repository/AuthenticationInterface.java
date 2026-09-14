@@ -13,7 +13,7 @@ import org.cristoferramos.system.model.User;
 
 public interface AuthenticationInterface{
     /**
-     * Busca al usuario por username O email y valida la contraseña.
+     * Busca al usuario por username o email y valida la contraseña.
      * Retorna el User si las credenciales son correctas, null en caso contrario.
      */
     User login(String usernameOrEmail, String password);

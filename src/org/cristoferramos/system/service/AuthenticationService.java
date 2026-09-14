@@ -18,34 +18,31 @@ public class AuthenticationService {
     private AuthenticationRepository authRepo;
     private Validations validate;
 
-    public AuthenticationService() {
+    public AuthenticationService(){
         this.authRepo = new AuthenticationRepository();
         this.validate = new Validations();
     }
 
-    public AuthenticationStatus authenticateUser(String usernameOrEmail, String password) {
-        // 1. Validar campos vacíos
-        if (validate.emptyText(usernameOrEmail) || validate.emptyText(password)) {
+    public AuthenticationStatus authenticateUser(String usernameOrEmail, String password){
+
+        if(validate.emptyText(usernameOrEmail) || validate.emptyText(password)){
             return AuthenticationStatus.CREDENTIALS_EMPTY;
         }
 
-        try {
-            // 2. UNA SOLA CONSULTA: busca al usuario y valida la contraseña
+        try{
             User user = authRepo.login(usernameOrEmail, password);
             
-            if (user != null) {
+            if(user != null){
                 return AuthenticationStatus.LOGIN_SUCCESS;
-            } else {
-                // Necesitamos distinguir entre "usuario no existe" y "contraseña incorrecta"
-                // Hacemos una segunda consulta SOLO para saber si el usuario existe
+            }else{
                 boolean exists = userExists(usernameOrEmail);
-                if (!exists) {
+                if(!exists){
                     return AuthenticationStatus.NOT_EXIST_USER;
-                } else {
+                }else{
                     return AuthenticationStatus.INVALID_PASSWORD;
                 }
             }
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
             return AuthenticationStatus.ERROR_LOGIN;
         }
@@ -54,17 +51,17 @@ public class AuthenticationService {
     /**
      * Verifica si el usuario existe (por username o email)
      */
-    private boolean userExists(String identifier) {
+    private boolean userExists(String identifier){
         boolean isEmail = identifier.contains("@");
         UserService userService = new UserService();
-        if (isEmail) {
+        if(isEmail){
             return userService.existsByEmail(identifier);
-        } else {
+        }else{
             return userService.existsByUsername(identifier);
         }
     }
 
-    public User getAuthenticatedUser(String usernameOrEmail, String password) {
+    public User getAuthenticatedUser(String usernameOrEmail, String password){
         return authRepo.login(usernameOrEmail, password);
     }
 }

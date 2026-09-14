@@ -12,6 +12,6 @@ package org.cristoferramos.system.service;
 public enum UserStatus {
     USER_CREATED, //200
     ERROR_USER_CREATE, //401
-    FIELDS_EMPTY,
-    VALUE_LENGTH_INVALID 
+    FIELDS_EMPTY, //301
+    VALUE_LENGTH_INVALID //302
 }

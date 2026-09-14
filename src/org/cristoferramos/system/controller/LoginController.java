@@ -23,6 +23,7 @@ import org.cristoferramos.system.utils.ViewFactory;
  */
 
 public class LoginController implements Initializable{
+    
     @FXML private TextField txtUsername;
     @FXML private PasswordField pwdContrasena;
     @FXML private Button btnLogIn;
@@ -50,9 +51,10 @@ public class LoginController implements Initializable{
         
         switch(status){
             case CREDENTIALS_EMPTY:
-                alertInfo.viewAlert("ADVERTENCIA", "Campos Vacíos", 
+                // En la buena practica esto no es una ADVERTENCIA es un ERROR
+                alertInfo.viewAlert("ERROR", "Campos Vacíos",
                         "Error de Validación", 
-                        "Campos de las credenciales vacíos");
+                        "Campos de las credenciales vacíos.");
                 break;
                 
             case NOT_EXIST_USER:
@@ -65,6 +67,7 @@ public class LoginController implements Initializable{
                 alertInfo.viewAlert("ERROR", "Contraseña Incorrecta", 
                         "Error de Autenticación", 
                         "La contraseña ingresada es incorrecta.");
+                //Esta linia borra la contraseña si esta incorrecta.
                 pwdContrasena.clear();
                 break;
                 

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" stylesheets="@../resources/styles/LoginStyles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.cristoferramos.system.controller.LoginController">
+<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" stylesheets="@../resources/styles/LoginStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.cristoferramos.system.controller.LoginController">
    <opaqueInsets>
       <Insets />
    </opaqueInsets>
@@ -25,7 +25,7 @@
                <image>
                   <Image url="@../resources/images/Usuario-Sin-Fondo.png" />
                </image></ImageView>
-            <Label styleClass="etiqueta" text="Nombre de Usuario" />
+            <Label styleClass="etiqueta" text="Nombre de Usuario o Correo" />
             <TextField fx:id="txtUsername" styleClass="campo" />
             <Label styleClass="etiqueta" text="Contrseña" />
             <PasswordField fx:id="pwdContrasena" styleClass="campo" />
