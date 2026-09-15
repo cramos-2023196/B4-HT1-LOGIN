@@ -1,2 +1,2 @@
 # B4-HT1-LOGIN
-El proyecto en clase
+Este proyecto es la tarea de FXML con Layer architecture.
