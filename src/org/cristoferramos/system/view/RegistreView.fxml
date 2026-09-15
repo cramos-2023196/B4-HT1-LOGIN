@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" spacing="10.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.cristoferramos.system.controller.RegisterUserController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" spacing="10.0" styleClass="vbox-padre" stylesheets="@../resources/styles/RegistreUserStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.cristoferramos.system.controller.RegisterUserController">
    <opaqueInsets>
       <Insets />
    </opaqueInsets>
@@ -53,11 +53,14 @@
             <PasswordField fx:id="pwdPassword" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <PasswordField fx:id="pwdConfirmPassword" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
+         <VBox.margin>
+            <Insets bottom="5.0" left="12.0" right="12.0" top="5.0" />
+         </VBox.margin>
       </GridPane>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
          <children>
-            <Button fx:id="btnCancel" mnemonicParsing="false" onMouseClicked="#onCancel" text="Cancelar" />
-            <Button fx:id="btnCreateUser" mnemonicParsing="false" onMouseClicked="#onCreateUser" text="Crear Cuenta" />
+            <Button fx:id="btnCancel" mnemonicParsing="false" onMouseClicked="#onCancel" styleClass="btn-principal" stylesheets="@../resources/styles/RegistreUserStyles.css" text="Cancelar" />
+            <Button fx:id="btnCreateUser" mnemonicParsing="false" onMouseClicked="#onCreateUser" styleClass="btn-principal" stylesheets="@../resources/styles/RegistreUserStyles.css" text="Crear Cuenta" />
          </children>
       </HBox>
    </children>

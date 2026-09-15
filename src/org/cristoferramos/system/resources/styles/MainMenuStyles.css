@@ -4,6 +4,62 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 /* 
     Created on : 30/08/2026, 19:09:05
-    Author     : sulma
+    Author     : Cristofer Ramos
 */
+.btn-menu{
+    -fx-background-color: #2C3E50; 
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-border-color: #2980B9; 
+    -fx-border-width: 2px;     
+    -fx-border-radius: 8px;   
+    -fx-background-radius: 10px; 
+}
+
+.btn-menu:hover{
+    -fx-background-color: #2980B9; 
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+}
+
+.btn-menu:pressed{
+    -fx-background-color: #1F618D;
+    -fx-scale-x: 0.95; 
+    -fx-scale-y: 0.95;
+}
+
+.menu-bar{
+    -fx-background-color: #F4F6F9; 
+}
+
+.menu-bar .label{
+    -fx-text-fill: #1A1A1A;
+    -fx-font-size: 15px; 
+}
+
+.menu-bar .menu:hover, .menu-bar .menu:showing {
+    -fx-background-color: #D5D8DC;
+}
+
+.menu-bar .menu:hover, .menu-bar .menu:showing{
+    -fx-background-color: #ECF0F1;
+}
+
+.vbox-lateral{
+    -fx-background-color: #ECF0F1;
+}
+
+.panel-contenido{
+    -fx-background-color: #FFFFFF;
+}
+
+.contenedor-raiz{
+    -fx-background-color: #BDC3C7;
+}
+
+
+
+
+
+
 

@@ -20,14 +20,14 @@ public class AuthenticationRepository implements AuthenticationInterface {
 
     @Override
     public User login(String usernameOrEmail, String password){
-        // IMPORTANTE: NO usamos try-with-resources con la Connection
-        // porque cerraría la conexión singleton y las siguientes consultas fallarían.
-        String sql = "SELECT id_user, name, lastname, email, user, password FROM `Users` WHERE `user` = ? OR `email` = ?";
+        String sql = "SELECT id_user, name, lastname, email, user, password FROM Users WHERE (BINARY user = ? OR BINARY email = ?) AND BINARY password = ?";
         
         try{
             PreparedStatement stmt = conexionDB.getConnection().prepareStatement(sql);
+            
             stmt.setString(1, usernameOrEmail.trim());
             stmt.setString(2, usernameOrEmail.trim());
+            stmt.setString(3, password); 
             
             ResultSet rs = stmt.executeQuery();
             
@@ -44,17 +44,15 @@ public class AuthenticationRepository implements AuthenticationInterface {
                 rs.close();
                 stmt.close();
                 
-                if(userFound.getPassword().equals(password)){
-                    return userFound;
-                }
-            }else{
+                return userFound; // Retorna el usuario autenticado
+            } else {
                 rs.close();
                 stmt.close();
             }
-        }catch (SQLException e){
+        } catch (SQLException e){
             System.out.println("Error al hacer login: " + e.getMessage());
             e.printStackTrace();
         }
-        return null;
+        return null; 
     }
 }

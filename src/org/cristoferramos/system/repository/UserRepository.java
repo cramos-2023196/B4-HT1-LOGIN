@@ -42,7 +42,7 @@ public class UserRepository implements UserInterface {
     }
 
     public User findByUsername(String username){
-        String sql = "SELECT id_user, name, lastname, email, user, password FROM `Users` WHERE `user` = ?";
+        String sql = "SELECT id_user, name, lastname, email, user, password FROM Users WHERE BINARY user = ?";
         try{
             PreparedStatement stmt = conexionDB.getConnection().prepareStatement(sql);
             stmt.setString(1, username.trim());
@@ -70,7 +70,7 @@ public class UserRepository implements UserInterface {
     }
 
     public User findByEmail(String email){
-        String sql = "SELECT id_user, name, lastname, email, user, password FROM `Users` WHERE `email` = ?";
+        String sql = "SELECT id_user, name, lastname, email, user, password FROM Users WHERE BINARY email = ?";
         try{
             PreparedStatement stmt = conexionDB.getConnection().prepareStatement(sql);
             stmt.setString(1, email.trim());
@@ -91,7 +91,7 @@ public class UserRepository implements UserInterface {
             }
             rs.close();
             stmt.close();
-        } catch (SQLException e){
+        }catch (SQLException e){
             e.printStackTrace();
         }
         return null;

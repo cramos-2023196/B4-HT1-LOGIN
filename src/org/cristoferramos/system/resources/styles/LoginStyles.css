@@ -6,6 +6,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Created on : 18/08/2026, 10:19:36
     Author     : Cristofer Ramos
 */
+.vbox-padre{
+    -fx-background-color: #D1D5DB; 
+}
+
+.vbox-hijo{
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 30px;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;      
+}
+
 .etiqueta{
     -fx-font-size: 16px;
 }

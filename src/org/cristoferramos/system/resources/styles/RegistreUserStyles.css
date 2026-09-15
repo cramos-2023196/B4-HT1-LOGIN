@@ -6,15 +6,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Created on : 25/08/2026, 10:17:49
     Author     : Cristofer Ramos
 */
+.vbox-padre{
+    -fx-background-color: #F1F5F9;
+}
 
 .form-register{
     -fx-background-color: #1D215E;
+    -fx-padding: 20px;  
+    -fx-vgap: 12px;     
+    -fx-hgap: 15px;      
 }
 
 .form-register Label{
     -fx-text-fill: white;
     -fx-font-size: 16px;
-    
 }
 
 .form-register TextField,
@@ -24,7 +29,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-border-width: 2px;
     -fx-border-radius:5px;
     -fx-background-color: white;
-        
+}
+
+.btn-principal{
+    -fx-background-color: #38BDF8;
+    -fx-text-fill: #1D215E;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-border-color: #0284C7;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+
+.btn-principal:hover{
+    -fx-background-color: #7DD3FC;
+    -fx-border-color: #38BDF8;
+}
+
+.btn-principal:pressed{
+    -fx-background-color: #0284C7;
+    -fx-border-color: #0369A1;
 }
 
 

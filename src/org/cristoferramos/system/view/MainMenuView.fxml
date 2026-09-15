@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.cristoferramos.system.controller.MainMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" styleClass="contenedor-raiz" stylesheets="@../resources/styles/MainMenuStyles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.cristoferramos.system.controller.MainMenuController">
    <top>
-      <MenuBar prefHeight="25.0" prefWidth="215.0" BorderPane.alignment="CENTER">
+      <MenuBar id="menu-bar" prefHeight="25.0" prefWidth="215.0" stylesheets="@../resources/styles/MainMenuStyles.css" BorderPane.alignment="CENTER">
         <menus>
             <Menu mnemonicParsing="false" text="Unspecified Menu">
               <items>
@@ -37,20 +37,20 @@
       </MenuBar>
    </top>
    <left>
-      <VBox alignment="CENTER" prefHeight="265.0" prefWidth="141.0" spacing="12.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="261.0" prefWidth="164.0" spacing="12.0" styleClass="vbox-lateral" stylesheets="@../resources/styles/MainMenuStyles.css" BorderPane.alignment="CENTER">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
          <children>
-            <Button mnemonicParsing="false" text="Inicion" />
-            <Button mnemonicParsing="false" text="Perfil" />
-            <Button mnemonicParsing="false" text="Configuración" />
-            <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onMouseClicked="#onCerrarSesion" text="Cerrar Sesión" />
+            <Button mnemonicParsing="false" styleClass="btn-menu" stylesheets="@../resources/styles/MainMenuStyles.css" text="Inicion" />
+            <Button mnemonicParsing="false" styleClass="btn-menu" stylesheets="@../resources/styles/MainMenuStyles.css" text="Perfil" />
+            <Button mnemonicParsing="false" styleClass="btn-menu" stylesheets="@../resources/styles/MainMenuStyles.css" text="Configuración" />
+            <Button fx:id="btnCerrarSesion" mnemonicParsing="false" onMouseClicked="#onCerrarSesion" styleClass="btn-menu" stylesheets="@../resources/styles/MainMenuStyles.css" text="Cerrar Sesión" />
          </children>
       </VBox>
    </left>
    <center>
-      <StackPane prefHeight="150.0" prefWidth="368.0" BorderPane.alignment="CENTER" />
+      <StackPane prefHeight="261.0" prefWidth="359.0" styleClass="panel-contenido" stylesheets="@../resources/styles/MainMenuStyles.css" BorderPane.alignment="CENTER" />
    </center>
    <padding>
       <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

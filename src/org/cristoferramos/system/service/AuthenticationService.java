@@ -24,9 +24,8 @@ public class AuthenticationService {
     }
 
     public AuthenticationStatus authenticateUser(String usernameOrEmail, String password){
-
         if(validate.emptyText(usernameOrEmail) || validate.emptyText(password)){
-            return AuthenticationStatus.CREDENTIALS_EMPTY;
+           return AuthenticationStatus.CREDENTIALS_EMPTY;
         }
 
         try{
@@ -47,10 +46,7 @@ public class AuthenticationService {
             return AuthenticationStatus.ERROR_LOGIN;
         }
     }
-
-    /**
-     * Verifica si el usuario existe (por username o email)
-     */
+    
     private boolean userExists(String identifier){
         boolean isEmail = identifier.contains("@");
         UserService userService = new UserService();
